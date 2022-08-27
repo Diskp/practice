@@ -1,12 +1,20 @@
 package main
 
-import "fmt"
+import (
+	"github.com/valyala/fasthttp"
+	"go.uber.org/zap"
+)
+
+var logger *zap.Logger
+
+func init() {
+	logger, _ = zap.NewProduction()
+}
+
+func fastHTTPHandler(ctx *fasthttp.RequestCtx) {
+	logger.Info("hello, go module", zap.ByteString("uri", ctx.RequestURI()))
+}
 
 func main() {
-	//testRemoveDuplicates()
-	var a int16 = 4
-	var b int32 = 8
-	var c int64
-	c = int64(a) + int64(b)
-	fmt.Println(c)
+	fasthttp.ListenAndServe(":8081", fastHTTPHandler)
 }
