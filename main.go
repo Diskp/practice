@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/valyala/fasthttp"
 	"go.uber.org/zap"
 )
@@ -17,4 +18,5 @@ func fastHTTPHandler(ctx *fasthttp.RequestCtx) {
 
 func main() {
 	fasthttp.ListenAndServe(":8081", fastHTTPHandler)
+	fmt.Println("test reset --hard")
 }
