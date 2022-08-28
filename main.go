@@ -18,5 +18,5 @@ func fastHTTPHandler(ctx *fasthttp.RequestCtx) {
 
 func main() {
 	fasthttp.ListenAndServe(":8081", fastHTTPHandler)
-	fmt.Println("test conflict test")
+	fmt.Println("test conflict dev")
 }
